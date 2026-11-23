@@ -1,10 +1,13 @@
 #pragma once
 
-#include "camera.h"
+#include "core/camera.h"
+#include "core/shell.h"
 #include "gl.h"
-#include "shell.h"
 
 namespace agar {
+inline constexpr std::array<Vec, 5> cellColors{
+    {{{0.055, 0.85, 0.73}}, {{1.0, 0.36, 0.31}}, {{0.65, 0.40, 0.95}}, {{0.24, 0.65, 1}}, {{1, 0.72, 0.22}}}};
+
 class CellRenderer {
 public:
     explicit CellRenderer(const GlApi& gl);

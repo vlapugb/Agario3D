@@ -2,7 +2,7 @@
 #include <optional>
 
 #include "gl.h"
-#include "menu.h"
+#include "session/menu.h"
 
 namespace agar {
 class Hud {

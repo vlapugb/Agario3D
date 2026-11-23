@@ -9,13 +9,23 @@ set(HUYNITY_BUILD_ADAPTERS ON)
 set(HUYNITY_BUILD_EXAMPLES OFF)
 add_subdirectory("${HUYNITY_SOURCE_DIR}" huynity)
 find_package(SDL3 REQUIRED CONFIG)
-add_library(agar_match game/deformation.cpp game/match.cpp game/spike.cpp game/shell.cpp game/camera.cpp)
+add_library(agar_match
+    game/core/camera.cpp
+    game/core/deformation.cpp
+    game/core/match.cpp
+    game/core/shell.cpp
+    game/core/spike.cpp
+)
+target_include_directories(agar_match PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/game")
 target_link_libraries(agar_match PUBLIC huynity::objectlib)
-add_library(agar_session game/local_game.cpp game/menu.cpp)
+
+add_library(agar_session game/session/local_game.cpp game/session/menu.cpp)
 target_link_libraries(agar_session PUBLIC agar_match SDL3::SDL3)
-add_library(agar_cells game/cell_renderer.cpp game/gl.cpp)
+
+add_library(agar_cells game/render/cell_renderer.cpp game/render/gl.cpp)
 target_link_libraries(agar_cells PUBLIC agar_match SDL3::SDL3)
-add_executable(agario3d game/main.cpp game/view.cpp game/hud.cpp)
+
+add_executable(agario3d game/main.cpp game/render/view.cpp game/render/hud.cpp)
 target_link_libraries(agario3d PRIVATE agar_session agar_cells huynity::engine)
 if(WIN32)
     # glcorearb.h получает соглашение о вызовах без макросов near/far из windows.h.
@@ -44,16 +54,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
     target_compile_options(agario3d PRIVATE -Wall -Wextra -Wpedantic)
 endif()
 if(BUILD_TESTING)
-    add_executable(agar_tests game/match_tests.cpp)
-    target_link_libraries(agar_tests PRIVATE agar_match huynity::runtime)
-    add_test(NAME agar_match COMMAND agar_tests)
-    add_executable(agar_session_tests game/session_tests.cpp)
-    target_link_libraries(agar_session_tests PRIVATE agar_session)
-    add_test(NAME agar_session COMMAND agar_session_tests)
-    add_executable(agar_cell_render_tests game/cell_render_tests.cpp)
-    target_link_libraries(agar_cell_render_tests PRIVATE agar_cells huynity::engine)
-    add_test(NAME agar_cell_render COMMAND agar_cell_render_tests)
-    set_tests_properties(agar_cell_render PROPERTIES LABELS native SKIP_RETURN_CODE 77)
+    add_subdirectory(tests)
 endif()
 
 include(packaging/packages.cmake)

@@ -2,7 +2,7 @@
 
 #include <SDL3/SDL.h>
 
-#include "camera.h"
+#include "core/camera.h"
 #include "menu.h"
 
 namespace agar {

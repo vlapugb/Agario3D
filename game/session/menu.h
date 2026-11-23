@@ -2,7 +2,7 @@
 
 #include <span>
 
-#include "match.h"
+#include "core/match.h"
 
 namespace agar {
 enum class Screen {
@@ -65,8 +65,6 @@ struct Menu {
     bool operator==(const Menu&) const = default;
 };
 
-inline constexpr std::array<Vec, 5> cellColors{
-    {{{0.055, 0.85, 0.73}}, {{1.0, 0.36, 0.31}}, {{0.65, 0.40, 0.95}}, {{0.24, 0.65, 1}}, {{1, 0.72, 0.22}}}};
 std::u32string_view label(Action action);
 std::u32string number(int value);
 std::string settingsPath();

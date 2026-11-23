@@ -5,7 +5,7 @@
 #include <source_location>
 #include <stdexcept>
 
-#include "local_game.h"
+#include "session/local_game.h"
 
 namespace {
 using namespace agar;

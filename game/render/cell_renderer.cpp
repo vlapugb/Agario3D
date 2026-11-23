@@ -4,8 +4,6 @@
 #include <cmath>
 #include <optional>
 
-#include "menu.h"
-
 namespace agar {
 namespace {
 constexpr const char* vertex = R"(#version 330 core

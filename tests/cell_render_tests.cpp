@@ -4,7 +4,7 @@
 #include <cmath>
 #include <iostream>
 
-#include "cell_renderer.h"
+#include "render/cell_renderer.h"
 
 namespace {
 using namespace agar;

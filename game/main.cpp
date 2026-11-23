@@ -7,8 +7,8 @@
 #include <iostream>
 #include <stdexcept>
 
-#include "local_game.h"
-#include "view.h"
+#include "render/view.h"
+#include "session/local_game.h"
 
 int main() {
     try {

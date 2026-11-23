@@ -8,9 +8,9 @@
 #include <stdexcept>
 #include <string>
 
-#include "camera.h"
-#include "match.h"
-#include "shell.h"
+#include "core/camera.h"
+#include "core/match.h"
+#include "core/shell.h"
 
 namespace {
 using namespace agar;
