@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Agario 3D
+Comment=Fly, split and grow in a zero-gravity arena
+Comment[ru]=Летайте, делитесь и набирайте массу в невесомости
+Exec=agario3d
+Icon=agario3d
+Terminal=false
+Categories=Game;ActionGame;
